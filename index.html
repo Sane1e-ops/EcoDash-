@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1733">
+  <meta name="description" content="EcoDash is a solar-powered community delivery simulation set in a changing African landscape.">
+  <title>EcoDash — African Logistics Simulator</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/ui-theme.css">
+  <!-- Classic scripts share globals and can be loaded directly from file://. -->
+  <script defer src="js/utils.js"></script>
+  <script defer src="js/player.js"></script>
+  <script defer src="js/obstacles.js"></script>
+  <script defer src="js/missions.js"></script>
+  <script defer src="js/weather.js"></script>
+  <script defer src="js/particles.js"></script>
+  <script defer src="js/storage.js"></script>
+  <script defer src="js/game.js"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="EcoDash home"><span class="brand-mark">E</span><span>EcoDash<small>COMMUNITY AIR LOGISTICS</small></span></a>
+      <div class="topbar-right"><button class="icon-button" id="sound-button" aria-label="Toggle sound" title="Toggle sound">♫ <span>Sound on</span></button><button class="icon-button" id="pause-button" aria-label="Pause game" title="Pause or resume">Ⅱ <span>Pause</span></button></div>
+    </header>
+
+    <section class="dashboard" aria-label="Game dashboard">
+      <div class="game-column">
+        <div class="game-heading"><h1>Deliver each package across the <em>landscape.</em></h1></div>
+        <div class="canvas-frame">
+          <canvas id="game-canvas" aria-label="EcoDash 2D drone simulation. Use WASD or arrow keys to fly." tabindex="0"></canvas>
+          <div class="canvas-hint"><span class="keycap">W</span><span class="keycap">A</span><span class="keycap">S</span><span class="keycap">D</span><span>or arrow keys to fly</span></div>
+          <div class="map-label"><span class="map-pin">●</span> EASTERN DISTRICT</div>
+          <section class="game-overlay" id="start-overlay" aria-labelledby="start-title">
+            <div class="overlay-card intro-card"><div class="sun-icon">☼</div><p class="eyebrow">A COMMUNITY DELIVERY SIMULATOR</p><h2 id="start-title">Every delivery<br>keeps you moving <em>forward.</em></h2><div class="control-summary"><span><b>WASD</b> / <b>↑←↓→</b> Fly</span><span><b>P</b> / <b>Esc</b> Pause</span></div><button class="primary-button" id="start-button">Begin your route <span>↗</span></button><small class="saved-score">PERSONAL BEST <b id="start-high-score">0</b></small></div>
+          </section>
+          <section class="game-overlay hidden" id="pause-overlay" aria-labelledby="pause-title"><div class="overlay-card compact-card"><span class="overlay-symbol">Ⅱ</span><p class="eyebrow">ROUTE ON HOLD</p><h2 id="pause-title">Take a moment.</h2><p>Your drone and community route are safe. Resume when you're ready.</p><button class="primary-button" id="resume-button">Resume route <span>↗</span></button><button class="text-button" id="pause-restart-button">Restart route</button></div></section>
+          <section class="game-overlay hidden" id="over-overlay" aria-labelledby="over-title"><div class="overlay-card compact-card"><span class="overlay-symbol">✦</span><p class="eyebrow">ROUTE REPORT</p><h2 id="over-title">Route complete.</h2><p id="over-message">The community deliveries are complete.</p><div class="result-grid"><span>FINAL SCORE <b id="final-score">0</b></span><span>DISTANCE <b id="final-distance">0 km</b></span><span>DELIVERIES <b id="final-deliveries">0</b></span><span>ENERGY EFFICIENCY <b id="final-efficiency">100%</b></span><span>PERSONAL BEST <b id="final-high-score">0</b></span></div><button class="primary-button" id="restart-button">Fly again <span>↗</span></button></div></section>
+        </div>
+        <div class="status-strip"><div><span class="status-dot"></span><span id="status-message">Ready when you are</span></div><span id="clock-label">DAY 01 · 08:00</span></div>
+      </div>
+
+      <aside class="side-panel" aria-label="Mission and flight information">
+        <section class="panel-section mission-panel"><div class="section-heading"><span class="section-icon">⌖</span><div><p class="eyebrow">ACTIVE DELIVERY</p><h2>Mission brief</h2></div><span class="mission-number" id="mission-number">01</span></div><p class="mission-guidance">Guide your drone across a changing landscape. Watch your battery and deliver supplies to each community.</p><div class="cargo-card"><div class="cargo-icon" id="cargo-icon">✚</div><div><span class="cargo-type" id="cargo-type">MEDICAL SUPPLIES</span><h3 id="mission-title">Care package</h3><p id="mission-description">Deliver essential care supplies to the community.</p></div></div><div class="destination-row"><span>DESTINATION</span><b id="destination-name">Maji Village</b></div><div class="destination-row"><span>RANGE</span><b id="destination-range">— km</b></div><div class="objective-counter"><div><span>OBJECTIVES COMPLETED</span><b id="objective-count">0 / 5</b></div><div class="objective-checklist" id="objective-checklist" role="img" aria-label="0 of 5 objectives completed"><span class="objective-check"></span><span class="objective-check"></span><span class="objective-check"></span><span class="objective-check"></span><span class="objective-check"></span></div></div><div class="mission-progress"><div><span>ROUTE PROGRESS</span><b id="mission-progress-label">0%</b></div><div class="progress-track"><span id="mission-progress-bar"></span></div></div></section>
+        <section class="panel-section flight-panel"><div class="section-heading"><span class="section-icon">⌁</span><div><p class="eyebrow">FLIGHT STATUS</p><h2>Drone status</h2></div></div><div class="battery-row"><div><span class="eyebrow">BATTERY</span><b id="battery-value">100%</b></div><span id="battery-state" class="mini-state">READY</span></div><div class="battery-track"><span id="battery-bar"></span><i></i><i></i><i></i></div></section>
+      </aside>
+    </section>
+    <footer class="page-footer"><span>EcoDash <span class="footer-separator">/</span> Sustainable logistics, shared futures.</span><span>AN INTERACTIVE LEARNING EXPERIENCE</span></footer>
+  </main>
+</body>
+</html>

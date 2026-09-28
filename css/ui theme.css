@@ -1,0 +1,163 @@
+:root {
+  --bg: #0a1731;
+  --panel: #11213e;
+  --panel-2: #192d50;
+  --line: rgba(196, 220, 255, 0.14);
+  --text: #f0f6ff;
+  --muted: #a9bdd8;
+  --soft: #cbd9ec;
+  --lime: #a9dcff;
+  --green: #76add6;
+}
+
+body {
+  background: radial-gradient(ellipse at 42% -20%, #1d3c69 0, transparent 48%), var(--bg);
+}
+
+.brand small,
+.status-strip,
+.page-footer {
+  color: var(--muted);
+}
+
+.brand-mark {
+  color: #10203c;
+  border-radius: 8px;
+  transform: none;
+}
+
+.icon-button {
+  background: #17294a;
+  color: var(--soft);
+}
+
+.icon-button:hover {
+  border-color: rgba(169, 220, 255, 0.55);
+  color: var(--lime);
+}
+
+.game-heading h1 {
+  font-size: 28px;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.game-heading h1 em,
+.overlay-card h2 em {
+  color: var(--lime);
+}
+
+.side-panel {
+  background: #101e39;
+}
+
+.cargo-card {
+  background: #192e52;
+}
+
+.cargo-icon {
+  background: rgba(169, 220, 255, 0.12);
+}
+
+.cargo-card p {
+  color: #bdcce0;
+}
+
+.mission-guidance {
+  margin: -5px 0 14px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.objective-counter {
+  margin-top: 14px;
+}
+
+.objective-counter > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.objective-counter > div:first-child span,
+.objective-counter > div:first-child b {
+  font: 8px var(--mono);
+  letter-spacing: 0.5px;
+}
+
+.objective-counter > div:first-child span {
+  color: var(--muted);
+}
+
+.objective-counter > div:first-child b {
+  color: var(--lime);
+}
+
+.objective-checklist {
+  display: flex;
+  gap: 6px;
+  margin-top: 7px;
+}
+
+.objective-check {
+  display: grid;
+  place-items: center;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #6682a8;
+  border-radius: 3px;
+  background: #17294a;
+}
+
+.objective-check::after {
+  content: "✓";
+  color: #10203c;
+  font-size: 11px;
+  font-weight: 700;
+  opacity: 0;
+}
+
+.objective-check.complete {
+  border-color: var(--lime);
+  background: var(--lime);
+}
+
+.objective-check.complete::after {
+  opacity: 1;
+}
+
+.progress-track,
+.battery-track {
+  background: #2a3e62;
+}
+
+.battery-track i {
+  background: #17294a;
+}
+
+.game-overlay {
+  background: rgba(6, 16, 38, 0.78);
+  backdrop-filter: none;
+}
+
+.overlay-card {
+  border-color: rgba(169, 220, 255, 0.24);
+  border-radius: 8px;
+  background: rgba(16, 32, 61, 0.96);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.38);
+}
+
+.primary-button {
+  color: #10203c;
+}
+
+.primary-button:hover {
+  background: #c4e8ff;
+}
+
+@media (max-width: 520px) {
+  .game-heading h1 {
+    font-size: 24px;
+  }
+}
